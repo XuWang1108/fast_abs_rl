@@ -57,11 +57,11 @@ def eval_meteor(dec_pattern, dec_dir, ref_pattern, ref_dir):
                   key=lambda name: int(name.split('.')[0]))
     @curry
     def read_file(file_dir, file_name):
-        with open(join(file_dir, file_name)) as f:
+        with open(join(file_dir, file_name), encoding = 'utf-8') as f:
             return ' '.join(f.read().split())
     with tempfile.TemporaryDirectory() as tmp_dir:
-        with open(join(tmp_dir, 'ref.txt'), 'w') as ref_f,\
-             open(join(tmp_dir, 'dec.txt'), 'w') as dec_f:
+        with open(join(tmp_dir, 'ref.txt'), 'w', encoding = 'utf-8') as ref_f,\
+             open(join(tmp_dir, 'dec.txt'), 'w', encoding = 'utf-8') as dec_f:
             ref_f.write('\n'.join(map(read_file(ref_dir), refs)) + '\n')
             dec_f.write('\n'.join(map(read_file(dec_dir), decs)) + '\n')
 

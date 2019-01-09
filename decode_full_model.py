@@ -92,7 +92,7 @@ def decode(save_path, model_dir, split, batch_size,
             for j, n in ext_inds:
                 decoded_sents = [' '.join(dec) for dec in dec_outs[j:j+n]]
                 with open(join(save_path, 'output/{}.dec'.format(i)),
-                          'w') as f:
+                          'w', encoding='utf-8') as f:
                     f.write(make_html_safe('\n'.join(decoded_sents)))
                 i += 1
                 print('{}/{} ({:.2f}%) decoded in {} seconds\r'.format(

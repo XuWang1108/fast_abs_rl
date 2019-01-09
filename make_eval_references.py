@@ -23,10 +23,10 @@ def dump(split):
     for i in range(n_data):
         print('processing {}/{} ({:.2f}%%)\r'.format(i, n_data, 100*i/n_data),
               end='')
-        with open(join(data_dir, '{}.json'.format(i))) as f:
+        with open(join(data_dir, '{}.json'.format(i)), encoding='utf-8') as f:
             data = json.loads(f.read())
         abs_sents = data['abstract']
-        with open(join(dump_dir, '{}.ref'.format(i)), 'w') as f:
+        with open(join(dump_dir, '{}.ref'.format(i)), 'w', encoding='utf-8') as f:
             f.write(make_html_safe('\n'.join(abs_sents)))
     print('finished in {}'.format(timedelta(seconds=time()-start)))
 
